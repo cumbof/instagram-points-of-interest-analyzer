@@ -5,6 +5,7 @@
 package instagram.point.action;
 
 import instagram.point.Main;
+import instagram.point.util.InstagramData;
 import java.util.ArrayList;
 import org.jinstagram.Instagram;
 import org.jinstagram.auth.InstagramAuthService;
@@ -21,7 +22,7 @@ public class ConnectInstagramAction extends Action {
     private static final Token EMPTY_TOKEN = null;
     private final String apiKey = "0fbcf8f88e6d45b89ae445fd961a752f";
     private final String apiSecret = "1351472489994299a4c7e3c1ca83f04d";
-    private final String callback = "http://test/";
+    private final String callback = "http://localhost/instagram-api/instagammy.php";
     
     @Override
     public ArrayList<Object> execute(String command) {
@@ -48,6 +49,8 @@ public class ConnectInstagramAction extends Action {
             if (instagram.getAccessToken()!=null) {
                 Main.setInstagram(instagram);
                 Main.getApp().getConnectionStatusLabel().setText("CONNECTION ESTABLISHED!");
+                
+                InstagramData.setAccessToken(accessToken);
             }
             else
                 Main.getApp().getConnectionStatusLabel().setText("CONNECTION ERROR!");

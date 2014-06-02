@@ -24,9 +24,10 @@ public class ControllerMap {
     
     private void initMap() {
         map = new HashMap<>();
-        
         map.put("connect_button", "instagram.point.action.ConnectInstagramAction");
         map.put("searchPoints_button", "instagram.point.action.SearchPointsOfInterestAction");
+        map.put("exportData_button", "instagram.point.action.ExportDataAction");
+        map.put("findCommonInterests_button", "instagram.point.action.FindCommonInterestsAction");
     }
     
 }

@@ -5,6 +5,7 @@
 package instagram.point.action;
 
 import instagram.point.Main;
+import instagram.point.util.InstagramData;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -33,7 +34,7 @@ public class SearchPointsOfInterestAction extends Action {
 
         HashMap<Location, List<MediaFeedData>> location2mediaFeeds = new HashMap<Location, List<MediaFeedData>>();
         HashMap<MediaFeedData, User> mediaFeeds2user = new HashMap<MediaFeedData, User>();
-                
+        
         
         Main.getApp().getJSONOutputTextArea().setText("");
         
@@ -71,6 +72,11 @@ public class SearchPointsOfInterestAction extends Action {
                             }
                         }
                         message += "\nRETRIEVED MEDIA: " + mediaFeeds2user.size();
+                        
+                        if ((location2mediaFeeds.size() > 0) && (mediaFeeds2user.size() > 0)) {
+                            InstagramData.setLocation2MediaFeeds(location2mediaFeeds);
+                            InstagramData.setMediaFeeds2User(mediaFeeds2user);
+                        }
                         
                     } catch (Exception ex) {
                         message = "AN ERROR HAS OCCURRED RETRIEVING POINTS OF INTEREST...";

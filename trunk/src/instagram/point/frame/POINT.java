@@ -7,13 +7,9 @@ package instagram.point.frame;
 import instagram.point.Application;
 import instagram.point.Controller;
 import instagram.point.init.ControllerMap;
-import instagram.point.init.ExtensionMap;
 import java.awt.Frame;
 import java.util.HashMap;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 /**
  *
@@ -28,7 +24,6 @@ public final class POINT extends javax.swing.JFrame implements Application {
         initComponents();
         initControllerMap();
         command2action = new ControllerMap();
-        extensionMap = new ExtensionMap();
     }
 
     /**
@@ -54,10 +49,15 @@ public final class POINT extends javax.swing.JFrame implements Application {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        jsonStructureInstagramHelp_button = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jsonOutput_textArea = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
+        exportData_button = new javax.swing.JButton();
+        exportData_button.addActionListener(new Controller());
+        findCommonInterests_button = new javax.swing.JButton();
+        findCommonInterests_button.addActionListener(new Controller());
+        jScrollPane2 = new javax.swing.JScrollPane();
+        interestsOutput_textArea = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -66,14 +66,24 @@ public final class POINT extends javax.swing.JFrame implements Application {
         latitude_textField = new javax.swing.JTextField();
         longitude_textField = new javax.swing.JTextField();
         distance_textField = new javax.swing.JTextField();
-        pointsOfInterestHelp_button = new javax.swing.JButton();
         searchPoints_button = new javax.swing.JButton();
         searchPoints_button.addActionListener(new Controller());
+        jSeparator4 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jSeparator5 = new javax.swing.JSeparator();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("POINT - Instagram Points Of INTerest Analyzer");
+        setResizable(false);
 
-        jLabel1.setText("Instagram Points Of Interest");
+        jLabel1.setText("POINT - Instagram Points Of INTerest Analyzer");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setText("USER ACCESS TOKEN:");
 
         connect_button.setText("Connect to Instagram");
@@ -84,14 +94,8 @@ public final class POINT extends javax.swing.JFrame implements Application {
 
         jLabel11.setText("You can edit the following information to filter data according to your needs");
 
-        jsonStructureInstagramHelp_button.setText("?");
-        jsonStructureInstagramHelp_button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jsonStructureInstagramHelpActionPerformer(evt);
-            }
-        });
-
         jsonOutput_textArea.setColumns(20);
+        jsonOutput_textArea.setEditable(false);
         jsonOutput_textArea.setRows(5);
         jScrollPane1.setViewportView(jsonOutput_textArea);
 
@@ -105,37 +109,58 @@ public final class POINT extends javax.swing.JFrame implements Application {
                     .addComponent(jScrollPane1)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
-                        .addComponent(jsonStructureInstagramHelp_button)))
+                        .addGap(0, 268, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jsonStructureInstagramHelp_button))
+                .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jTabbedPane1.addTab("Data", jPanel2);
 
+        exportData_button.setText("Export Data");
+
+        findCommonInterests_button.setText("Find common interests");
+
+        interestsOutput_textArea.setColumns(20);
+        interestsOutput_textArea.setRows(5);
+        jScrollPane2.setViewportView(interestsOutput_textArea);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 576, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(findCommonInterests_button)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 400, Short.MAX_VALUE)
+                        .addComponent(exportData_button)))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 372, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(exportData_button)
+                    .addComponent(findCommonInterests_button))
+                .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Map", jPanel3);
+        jTabbedPane1.addTab("Users Points of Interest Graph", jPanel3);
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setText("Search for Points Of Interest");
 
         jLabel7.setText("Select an area");
@@ -146,14 +171,20 @@ public final class POINT extends javax.swing.JFrame implements Application {
 
         jLabel10.setText("Distance:");
 
-        pointsOfInterestHelp_button.setText("?");
-        pointsOfInterestHelp_button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pointsOfInterestHelpActionPerformer(evt);
-            }
-        });
-
         searchPoints_button.setText("Search");
+
+        jLabel2.setText("Notes on how to retrieve a USER ACCESS TOKEN:");
+
+        jLabel5.setText("1. you have to be registered on Instagram first");
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel12.setText("http://instagram.com/");
+
+        jLabel13.setText("2. then you have to obtain a valid Access Token");
+
+        jLabel18.setText("Fabio Cumbo - Computer Science and Automation Department - Roma Tre University - 2014");
+
+        jLabel17.setText("3. finally insert it in the provided field");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -162,23 +193,16 @@ public final class POINT extends javax.swing.JFrame implements Application {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator5)
                     .addComponent(jSeparator1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(connect_button, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+                            .addComponent(connect_button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jSeparator3)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
-                                .addComponent(accessToken_textField))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(connectionStatus_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
-                                .addComponent(pointsOfInterestHelp_button))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -190,11 +214,27 @@ public final class POINT extends javax.swing.JFrame implements Application {
                                     .addComponent(longitude_textField)
                                     .addComponent(distance_textField)))
                             .addComponent(searchPoints_button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel7))
+                            .addComponent(accessToken_textField, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSeparator4)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel13)
+                                    .addComponent(jLabel17))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE)))
+                        .addComponent(jTabbedPane1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel18)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -206,7 +246,6 @@ public final class POINT extends javax.swing.JFrame implements Application {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -217,12 +256,10 @@ public final class POINT extends javax.swing.JFrame implements Application {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(connectionStatus_label, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(pointsOfInterestHelp_button))
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel6)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -239,8 +276,25 @@ public final class POINT extends javax.swing.JFrame implements Application {
                             .addComponent(distance_textField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(searchPoints_button)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(13, 13, 13)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jSeparator2)
                     .addComponent(jTabbedPane1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel18)
                 .addContainerGap())
         );
 
@@ -258,19 +312,6 @@ public final class POINT extends javax.swing.JFrame implements Application {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void pointsOfInterestHelpActionPerformer(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pointsOfInterestHelpActionPerformer
-        HelpWindow help = new HelpWindow();
-        help.setText("");
-        help.setVisible(true);
-    }//GEN-LAST:event_pointsOfInterestHelpActionPerformer
-
-    private void jsonStructureInstagramHelpActionPerformer(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jsonStructureInstagramHelpActionPerformer
-        HelpWindow help = new HelpWindow();
-        help.setText("");
-        help.setVisible(true);
-    }//GEN-LAST:event_jsonStructureInstagramHelpActionPerformer
-
-    private static ExtensionMap extensionMap;
     private static ControllerMap command2action;
     private static HashMap<Object, String> controllerMap;
 
@@ -279,11 +320,20 @@ public final class POINT extends javax.swing.JFrame implements Application {
     private static javax.swing.JButton connect_button;
     private static javax.swing.JLabel connectionStatus_label;
     private static javax.swing.JTextField distance_textField;
+    private static javax.swing.JButton exportData_button;
+    private static javax.swing.JButton findCommonInterests_button;
+    private static javax.swing.JTextArea interestsOutput_textArea;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -292,17 +342,33 @@ public final class POINT extends javax.swing.JFrame implements Application {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private static javax.swing.JTextArea jsonOutput_textArea;
-    private static javax.swing.JButton jsonStructureInstagramHelp_button;
     private static javax.swing.JTextField latitude_textField;
     private static javax.swing.JTextField longitude_textField;
-    private static javax.swing.JButton pointsOfInterestHelp_button;
     private static javax.swing.JButton searchPoints_button;
     // End of variables declaration//GEN-END:variables
+    
+    @Override
+    public JButton getFindCommonInterestsButton() {
+        return findCommonInterests_button;
+    }
+    
+    @Override
+    public JTextArea getInterestsOutputTextArea(){
+        return interestsOutput_textArea;
+    }
+    
+    @Override
+    public JButton getExportDataButton() {
+        return exportData_button;
+    }
     
     @Override
     public JTextField getAccessTokenTextField() {
@@ -349,6 +415,8 @@ public final class POINT extends javax.swing.JFrame implements Application {
         controllerMap = new HashMap<>();
         controllerMap.put(connect_button, "connect_button");
         controllerMap.put(searchPoints_button, "searchPoints_button");
+        controllerMap.put(exportData_button, "exportData_button");
+        controllerMap.put(findCommonInterests_button, "findCommonInterests_button");
     }
     
     @Override
@@ -359,11 +427,6 @@ public final class POINT extends javax.swing.JFrame implements Application {
     @Override
     public ControllerMap getCommand2Action() {
         return command2action;
-    }
-    
-    @Override
-    public ExtensionMap getExtensionMap() {
-        return extensionMap;
     }
     
     @Override

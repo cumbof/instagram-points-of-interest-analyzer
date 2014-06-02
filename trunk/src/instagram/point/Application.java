@@ -13,7 +13,6 @@
 package instagram.point;
 
 import instagram.point.init.ControllerMap;
-import instagram.point.init.ExtensionMap;
 import java.awt.Frame;
 import java.awt.event.WindowAdapter;
 import java.util.HashMap;
@@ -24,6 +23,12 @@ import javax.swing.*;
  * @author Fabio Cumbo
  */
 public interface Application {
+    
+    public JButton getFindCommonInterestsButton();
+    
+    public JTextArea getInterestsOutputTextArea();
+            
+    public JButton getExportDataButton();
         
     public JTextField getAccessTokenTextField();
     
@@ -48,9 +53,7 @@ public interface Application {
     public HashMap<Object, String> getControllerMap();
     
     public ControllerMap getCommand2Action();
-    
-    public ExtensionMap getExtensionMap();
-    
+        
     public Frame getFrame();
     
     public void setVisibleOverride(boolean value);

@@ -109,5 +109,28 @@ public class PrintData {
         catch (IOException e) {
             e.printStackTrace();
         }
-    }    
+    }
+
+    public static void printUsersInteractions(File outDir, long filePrefix, HashMap<String, List<String>> userCouple2Interests) {
+        try {
+            File outFile = new File(outDir.getAbsoluteFile()+"/"+filePrefix+"_usersInteractions.dat");
+            outFile.createNewFile();
+            
+            FileOutputStream fos = new FileOutputStream(outFile.getAbsoluteFile()); 
+            PrintStream out = new PrintStream(fos);
+        
+            out.println("SOURCE\tTARGET\tWEIGHT");
+            for (String couple: userCouple2Interests.keySet()) {
+                String[] couple_split = couple.split("\\|");
+                if (!couple_split[0].equals(couple_split[1]) && userCouple2Interests.get(couple).size()>0)
+                    out.println(couple_split[0]+"\t"+couple_split[1]+"\t"+userCouple2Interests.get(couple).size());
+            }
+            
+            out.close();
+            fos.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

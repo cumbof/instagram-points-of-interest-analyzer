@@ -54,7 +54,13 @@ public class FindCommonInterestsAction extends Action {
             
             if (userCouple2interests.size() > 0)
                 InstagramData.setUserCouple2Interests(userCouple2interests);
-            Main.getApp().getInterestsOutputTextArea().append(userCouple2interests.size()+" COUPLE OF USERS WITH COMMON INTERESTS FOUNDED!");
+            int count = 0;
+            for (String couple: userCouple2interests.keySet()) {
+                String[] couple_split = couple.split("\\|");
+                if (!couple_split[0].equals(couple_split[1]) && userCouple2interests.get(couple).size()>0)
+                    count++;
+            }
+            Main.getApp().getInterestsOutputTextArea().append(count+" COUPLE OF USERS WITH COMMON INTERESTS FOUNDED!");
             
         }
         

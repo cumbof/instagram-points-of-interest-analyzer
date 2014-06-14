@@ -37,6 +37,7 @@ public class ExportDataAction extends Action {
                     long filePrefix = System.currentTimeMillis();
                     PrintData.printInterest2UserMatrix(chooser.getSelectedFile(), filePrefix, InstagramData.getMediaFeeds2User());
                     PrintData.printUser2UserMatrix(chooser.getSelectedFile(), filePrefix, InstagramData.getUserCouple2Interests(), InstagramData.getMediaFeeds2User());
+                    PrintData.printUsersInteractions(chooser.getSelectedFile(), filePrefix, InstagramData.getUserCouple2Interests());
                     Main.getApp().getInterestsOutputTextArea().setText("DATA EXPORTED SUCCESSFULLY!");
                 }
                 else {

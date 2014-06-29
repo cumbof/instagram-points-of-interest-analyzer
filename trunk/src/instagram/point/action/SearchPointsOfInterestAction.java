@@ -5,6 +5,7 @@
 package instagram.point.action;
 
 import instagram.point.Main;
+import instagram.point.util.Facade;
 import instagram.point.util.InstagramData;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,7 +36,6 @@ public class SearchPointsOfInterestAction extends Action {
         HashMap<Location, List<MediaFeedData>> location2mediaFeeds = new HashMap<Location, List<MediaFeedData>>();
         HashMap<MediaFeedData, User> mediaFeeds2user = new HashMap<MediaFeedData, User>();
         
-        
         Main.getApp().getJSONOutputTextArea().setText("");
         
         String message = "";
@@ -53,7 +53,7 @@ public class SearchPointsOfInterestAction extends Action {
                     int i_distance = Integer.valueOf(distance);
                     
                     try {
-                        
+                                                
                         LocationSearchFeed searchLocationFeed = Main.getInstagram().searchLocation(d_latitude, d_longitude, i_distance);
                         
                         for (Location location: searchLocationFeed.getLocationList()) {
@@ -63,22 +63,61 @@ public class SearchPointsOfInterestAction extends Action {
                             List<MediaFeedData> mediaFeeds = searchMediaFeed.getData();
                             location2mediaFeeds.put(location, mediaFeeds);
                             
+                            ArrayList<Long> userIDs = new ArrayList<>();
                             for (MediaFeedData media: mediaFeeds) {
                                 mediaFeeds2user.put(media, media.getUser());
                                 message += "MEDIA ID: " + media.getId() + "\nLOCATION LATITUDE: " + media.getLocation().getLatitude()
                                         + "\nLOCATION LONGITUDE: " + media.getLocation().getLongitude() + "\nLOCATION NAME: " + media.getLocation().getName()
                                         + "\nUSER ID: " + media.getUser().getId() + "\nUSER NAME: " + media.getUser().getUserName() 
                                         + "\nUSER FULL NAME: " + media.getUser().getFullName() + "\n\n";
+                                if (!userIDs.contains(media.getUser().getId()))
+                                    userIDs.add(media.getUser().getId());
                             }
+                            
+                            //////////////////////////////////////////////////////////////////////////
+                            for (Long uid: userIDs) {
+                                try {
+                                    System.out.println(uid);
+                                    MediaFeed mf = Main.getInstagram().getRecentMediaFeed(uid);
+                                    List<MediaFeedData> mfs = mf.getData();
+                                    for (MediaFeedData media: mfs) {
+                                        Location l = media.getLocation();
+
+                                        //if (media.getLocation().getName()!=null) {
+                                        message += "MEDIA ID: " + media.getId() + "\nLOCATION LATITUDE: " + media.getLocation().getLatitude()
+                                            + "\nLOCATION LONGITUDE: " + media.getLocation().getLongitude() + "\nLOCATION NAME: " + media.getLocation().getName()
+                                            + "\nUSER ID: " + media.getUser().getId() + "\nUSER NAME: " + media.getUser().getUserName() 
+                                            + "\nUSER FULL NAME: " + media.getUser().getFullName() + "\n\n";
+                                        mediaFeeds2user.put(media, media.getUser());
+
+                                        if (location2mediaFeeds.containsKey(l)) {
+                                            List<MediaFeedData> list = location2mediaFeeds.get(l);
+                                            if (!list.contains(media))
+                                                list.add(media);
+                                            location2mediaFeeds.put(l, list);
+                                        }
+                                        else {
+                                            List<MediaFeedData> list = new ArrayList<>();
+                                            list.add(media);
+                                            location2mediaFeeds.put(l, list);
+                                        }
+                                        //}
+
+                                    }
+                                } catch (Exception e) {}
+                            }
+                            //////////////////////////////////////////////////////////////////////////
+                            
                         }
                         message += "\nRETRIEVED MEDIA: " + mediaFeeds2user.size();
                         
                         if ((location2mediaFeeds.size() > 0) && (mediaFeeds2user.size() > 0)) {
-                            InstagramData.setLocation2MediaFeeds(location2mediaFeeds);
-                            InstagramData.setMediaFeeds2User(mediaFeeds2user);
+                            InstagramData.setLocation2MediaFeeds(location2mediaFeeds, Main.getApp().toResetPoints());
+                            InstagramData.setMediaFeeds2User(mediaFeeds2user, Main.getApp().toResetPoints());
                         }
                         
                     } catch (Exception ex) {
+                        ex.printStackTrace();
                         message = "AN ERROR HAS OCCURRED RETRIEVING POINTS OF INTEREST...";
                     }
                     

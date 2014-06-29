@@ -24,7 +24,13 @@ import javax.swing.*;
  */
 public interface Application {
     
-    public JButton getFindCommonInterestsButton();
+    public boolean toResetPoints();
+    
+    public JTextArea getSystemRecommendationTextArea();
+    
+    public JButton getStartRecommendationButton();
+    
+    public JButton getFilterPointsOfInterestButton();
     
     public JTextArea getInterestsOutputTextArea();
             

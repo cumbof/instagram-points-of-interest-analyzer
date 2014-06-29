@@ -35,6 +35,7 @@ public final class POINT extends javax.swing.JFrame implements Application {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pointButtonGroup = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -54,10 +55,16 @@ public final class POINT extends javax.swing.JFrame implements Application {
         jPanel3 = new javax.swing.JPanel();
         exportData_button = new javax.swing.JButton();
         exportData_button.addActionListener(new Controller());
-        findCommonInterests_button = new javax.swing.JButton();
-        findCommonInterests_button.addActionListener(new Controller());
+        filterPointsOfInterest_button = new javax.swing.JButton();
+        filterPointsOfInterest_button.addActionListener(new Controller());
         jScrollPane2 = new javax.swing.JScrollPane();
         interestsOutput_textArea = new javax.swing.JTextArea();
+        jPanel4 = new javax.swing.JPanel();
+        startRecommendation_button = new javax.swing.JButton();
+        startRecommendation_button.addActionListener(new Controller());
+        jLabel14 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        systemRecommendation_textArea = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -76,6 +83,9 @@ public final class POINT extends javax.swing.JFrame implements Application {
         jSeparator5 = new javax.swing.JSeparator();
         jLabel18 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        resetPoints_radio = new javax.swing.JRadioButton();
+        addPoints_radio = new javax.swing.JRadioButton();
+        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("POINT - Instagram Points Of INTerest Analyzer");
@@ -118,15 +128,16 @@ public final class POINT extends javax.swing.JFrame implements Application {
                 .addContainerGap()
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jTabbedPane1.addTab("Data", jPanel2);
 
         exportData_button.setText("Export Data");
+        exportData_button.setEnabled(false);
 
-        findCommonInterests_button.setText("Find common interests");
+        filterPointsOfInterest_button.setText("Filter Points Of Interest");
 
         interestsOutput_textArea.setColumns(20);
         interestsOutput_textArea.setRows(5);
@@ -139,10 +150,10 @@ public final class POINT extends javax.swing.JFrame implements Application {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(findCommonInterests_button)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 400, Short.MAX_VALUE)
+                        .addComponent(filterPointsOfInterest_button)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(exportData_button)))
                 .addContainerGap())
         );
@@ -150,15 +161,55 @@ public final class POINT extends javax.swing.JFrame implements Application {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(exportData_button)
-                    .addComponent(findCommonInterests_button))
+                    .addComponent(filterPointsOfInterest_button))
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Users Points of Interest Graph", jPanel3);
+        jTabbedPane1.addTab("Filter Points Of Interest", jPanel3);
+
+        startRecommendation_button.setText("Start Recommendation System");
+
+        jLabel14.setText("<!-- If the system doesn't respond, please try to reconnect to Instagram using a new User Access Token --!>");
+
+        systemRecommendation_textArea.setColumns(20);
+        systemRecommendation_textArea.setRows(5);
+        jScrollPane3.setViewportView(systemRecommendation_textArea);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(startRecommendation_button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(jLabel14)
+                        .addGap(0, 51, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane3)))
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(startRecommendation_button)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Recommendation System", jPanel4);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setText("Search for Points Of Interest");
@@ -185,6 +236,15 @@ public final class POINT extends javax.swing.JFrame implements Application {
         jLabel18.setText("Fabio Cumbo - Computer Science and Automation Department - Roma Tre University - 2014");
 
         jLabel17.setText("3. finally insert it in the provided field");
+
+        pointButtonGroup.add(resetPoints_radio);
+        resetPoints_radio.setText("Reset Points Of Interest for each search");
+
+        pointButtonGroup.add(addPoints_radio);
+        addPoints_radio.setSelected(true);
+        addPoints_radio.setText("Add new founded Points Of Interest");
+
+        jLabel15.setText("to the previously searched points");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -220,13 +280,17 @@ public final class POINT extends javax.swing.JFrame implements Application {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
-                                    .addComponent(jLabel1)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel7)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel13)
-                                    .addComponent(jLabel17))
+                                    .addComponent(jLabel17)
+                                    .addComponent(resetPoints_radio)
+                                    .addComponent(addPoints_radio)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(21, 21, 21)
+                                        .addComponent(jLabel15)))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -234,7 +298,10 @@ public final class POINT extends javax.swing.JFrame implements Application {
                         .addComponent(jTabbedPane1))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel18)))
+                        .addComponent(jLabel18))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -288,7 +355,12 @@ public final class POINT extends javax.swing.JFrame implements Application {
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(addPoints_radio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(resetPoints_radio))
                     .addComponent(jSeparator2)
                     .addComponent(jTabbedPane1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -317,17 +389,20 @@ public final class POINT extends javax.swing.JFrame implements Application {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JTextField accessToken_textField;
+    private static javax.swing.JRadioButton addPoints_radio;
     private static javax.swing.JButton connect_button;
     private static javax.swing.JLabel connectionStatus_label;
     private static javax.swing.JTextField distance_textField;
     private static javax.swing.JButton exportData_button;
-    private static javax.swing.JButton findCommonInterests_button;
+    private static javax.swing.JButton filterPointsOfInterest_button;
     private static javax.swing.JTextArea interestsOutput_textArea;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
@@ -341,8 +416,10 @@ public final class POINT extends javax.swing.JFrame implements Application {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -352,12 +429,33 @@ public final class POINT extends javax.swing.JFrame implements Application {
     private static javax.swing.JTextArea jsonOutput_textArea;
     private static javax.swing.JTextField latitude_textField;
     private static javax.swing.JTextField longitude_textField;
+    private static javax.swing.ButtonGroup pointButtonGroup;
+    private static javax.swing.JRadioButton resetPoints_radio;
     private static javax.swing.JButton searchPoints_button;
+    private static javax.swing.JButton startRecommendation_button;
+    private static javax.swing.JTextArea systemRecommendation_textArea;
     // End of variables declaration//GEN-END:variables
     
     @Override
-    public JButton getFindCommonInterestsButton() {
-        return findCommonInterests_button;
+    public boolean toResetPoints() {
+        if (addPoints_radio.isSelected())
+            return false;
+        return true;
+    }
+    
+    @Override 
+    public JTextArea getSystemRecommendationTextArea() {
+        return systemRecommendation_textArea;
+    }
+    
+    @Override
+    public JButton getStartRecommendationButton() {
+        return startRecommendation_button;
+    }
+    
+    @Override
+    public JButton getFilterPointsOfInterestButton() {
+        return filterPointsOfInterest_button;
     }
     
     @Override
@@ -416,7 +514,8 @@ public final class POINT extends javax.swing.JFrame implements Application {
         controllerMap.put(connect_button, "connect_button");
         controllerMap.put(searchPoints_button, "searchPoints_button");
         controllerMap.put(exportData_button, "exportData_button");
-        controllerMap.put(findCommonInterests_button, "findCommonInterests_button");
+        controllerMap.put(filterPointsOfInterest_button, "filterPointsOfInterest_button");
+        controllerMap.put(startRecommendation_button, "startRecommendation_button");
     }
     
     @Override

@@ -5,6 +5,7 @@
 package instagram.point;
 
 import instagram.point.frame.POINT;
+import instagram.point.util.Facade;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -59,6 +60,8 @@ public class Main {
                 catch (InstantiationException e) { e.printStackTrace(); }
                 catch (UnsupportedLookAndFeelException e) { e.printStackTrace(); }
                 
+                //Facade facade = new Facade();
+                //facade.connect("localhost:5432/point", "postgres", "postgres");
                 app = new POINT();
                 app.setVisibleOverride(true);
                 app.setDefaultCloseOperationOverride(JFrame.EXIT_ON_CLOSE);

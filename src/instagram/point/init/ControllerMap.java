@@ -27,7 +27,8 @@ public class ControllerMap {
         map.put("connect_button", "instagram.point.action.ConnectInstagramAction");
         map.put("searchPoints_button", "instagram.point.action.SearchPointsOfInterestAction");
         map.put("exportData_button", "instagram.point.action.ExportDataAction");
-        map.put("findCommonInterests_button", "instagram.point.action.FindCommonInterestsAction");
+        map.put("filterPointsOfInterest_button", "instagram.point.action.FilterPointsOfInterestAction");
+        map.put("startRecommendation_button", "instagram.point.action.StartRecommendationSystemAction");
     }
     
 }
